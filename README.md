@@ -1,2 +1,6 @@
+The design was taken from [here](https://www.uihut.com/mobile-app-designs/banking-app-ui-kit-bankpic/19071)
+
 1. In a screen with many textFields, a lazyColumn with imePadding modificator is not a good solution, because on lower textFields the keyboard appears for a second and then disappears. It is better described (here)[https://stackoverflow.com/questions/73438920/unable-use-a-textfield-at-the-bottom-of-the-screen-in-a-lazycolumn]
 2. In signUp screen I use deprecated accompanist insets so that to make the textField scrolling and focusing to work as I intended. It is the actual problem of compose, more details here: https://issuetracker.google.com/issues/192043120 | https://issuetracker.google.com/issues/217770337
+3. Interesting [solution](https://fvilarino.medium.com/hoisting-state-in-composable-objects-a833195752c4) with states for textFields. You can take some inspiration from JetSurvey app.
+4. I do not use BaseViewModel (though it is sometimes easier to create a base class), I try to use delegation

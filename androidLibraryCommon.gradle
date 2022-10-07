@@ -1,0 +1,43 @@
+android {
+    compileSdk ProjectConfig.compileSdk
+
+    defaultConfig {
+        minSdk ProjectConfig.minSdk
+        targetSdk ProjectConfig.targetSdk
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kapt {
+        correctErrorTypes true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+
+        freeCompilerArgs += "-opt-in=kotlinx.coroutines.FlowPreview"
+        freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-opt-in=kotlin.contracts.ExperimentalContracts"
+        freeCompilerArgs += "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi"
+        freeCompilerArgs += "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi"
+        freeCompilerArgs += "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi"
+        freeCompilerArgs += "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
+        freeCompilerArgs += "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+        freeCompilerArgs += "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
+    }
+}

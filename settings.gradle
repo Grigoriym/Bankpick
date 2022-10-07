@@ -14,4 +14,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Bankpick"
+
 include ':app'
+include ':app:compose'
+include ':app:view'
+include ':uikit'
