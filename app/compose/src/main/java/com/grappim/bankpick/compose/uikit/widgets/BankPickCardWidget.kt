@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.grappim.bankpick.compose.R
+import com.grappim.uikit.R
 import com.grappim.bankpick.compose.domain.CardData
 import com.grappim.bankpick.compose.domain.CardType
 import com.grappim.bankpick.compose.ui.theme.BankPickSpunPearl

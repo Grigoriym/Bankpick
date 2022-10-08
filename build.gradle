@@ -8,6 +8,10 @@ buildscript {
             kotlin       : "1.7.10",
 
             android      : [
+                    appcompat : "1.5.1",
+                    fragment  : "1.5.3",
+                    viewpager : "1.0.0",
+
                     navigation: "2.5.2",
                     startup   : "1.1.1",
                     viewmodel : "2.5.1",
@@ -22,6 +26,18 @@ buildscript {
             google       : [
                     hilt: "2.43.2"
             ]
+    ]
+
+    ext.deps = [
+            android   : [
+                    appcompat: "androidx.appcompat:appcompat:${versions.android.appcompat}",
+                    fragment : "androidx.fragment:fragment-ktx:${versions.android.fragment}",
+                    viewpager: "androidx.viewpager2:viewpager2:${versions.android.viewpager}"
+            ],
+            navigation: [
+                    fragment: "androidx.navigation:navigation-fragment-ktx:${versions.android.navigation}",
+                    ui      : "androidx.navigation:navigation-ui-ktx:${versions.android.navigation}"
+            ],
     ]
 
     dependencies {

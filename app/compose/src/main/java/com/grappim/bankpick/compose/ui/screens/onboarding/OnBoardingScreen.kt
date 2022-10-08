@@ -6,12 +6,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.grappim.bankpick.app.onBoarding.OnBoardingPages
 import com.grappim.bankpick.compose.ui.theme.BankPickTheme
 import com.grappim.bankpick.compose.uikit.widgets.BankPickButton
+import com.grappim.uikit.R
 import kotlinx.coroutines.launch
 
 @Composable
@@ -42,7 +45,7 @@ fun OnBoardingScreen(
             )
         }
         BankPickButton(
-            text = "Next",
+            text = stringResource(id = R.string.next),
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .weight(1f),

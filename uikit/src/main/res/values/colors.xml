@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="bank_pick_background">@color/white</color>
+
+    <color name="bankpick_navy_blue">#FF0066FF</color>
+    <color name="bankpick_navy_blue_alpha_20">#200066FF</color>
+
+    <color name="bankpick_white_smoke">#FFF4F4F4</color>
+    <color name="bankpick_black_russian">#FF1E1E2D</color>
+    <color name="bankpick_red">#FFEE1010</color>
+    <color name="bankpick_spun_pearl">#FFA2A2A7</color>
+    <color name="bankpick_manatee">#FF8B8B94</color>
+</resources>

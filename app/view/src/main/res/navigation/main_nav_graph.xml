@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/fragmentOnBoarding">
+
+    <fragment
+        android:id="@+id/fragmentOnBoarding"
+        android:name="com.grappim.bankpick.view.ui.onBoarding.OnBoardingFragment"
+        tools:layout="@layout/fragment_on_boarding">
+        <action
+            android:id="@+id/fromOnBoardingToSignIn"
+            app:destination="@id/authGraph" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/authGraph"
+        app:startDestination="@id/fragmentSignIn">
+        <fragment
+            android:id="@+id/fragmentSignIn"
+            android:name="com.grappim.bankpick.view.ui.auth.signIn.SignInFragment"
+            tools:layout="@layout/fragment_sign_in">
+            <action
+                android:id="@+id/fromSignInToSignUp"
+                app:destination="@id/fragmentSignUp" />
+            <action
+                android:id="@+id/fromSignInToHomeRoot"
+                app:destination="@id/fragmentHomeRoot" />
+        </fragment>
+        <fragment
+            android:id="@+id/fragmentSignUp"
+            android:name="com.grappim.bankpick.view.ui.auth.signUp.SignUpFragment"
+            tools:layout="@layout/fragment_sign_up" />
+    </navigation>
+
+    <fragment
+        android:id="@+id/fragmentHomeRoot"
+        android:name="com.grappim.bankpick.view.ui.home.HomeRootFragment"
+        tools:layout="@layout/fragment_home_root" />
+
+</navigation>

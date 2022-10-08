@@ -3,7 +3,7 @@ package com.grappim.bankpick.compose.core
 import android.content.Context
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
-import com.grappim.bankpick.compose.R
+import com.grappim.uikit.R
 import com.grappim.bankpick.compose.domain.model.exception.NetworkException
 
 sealed class NativeText {

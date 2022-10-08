@@ -20,7 +20,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import com.grappim.bankpick.compose.R
+import com.grappim.uikit.R
 import com.grappim.bankpick.compose.ui.theme.BankPickSpunPearl
 import com.grappim.bankpick.compose.ui.theme.BankPickTheme
 import com.grappim.bankpick.compose.uikit.widgets.icon.BankPickDefaultIcon

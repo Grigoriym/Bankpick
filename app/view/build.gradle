@@ -1,4 +1,4 @@
-apply from: "$rootProject.projectDir/appCommon.gradle"
+apply from: "$rootProject.projectDir/applicationCommon.gradle"
 
 android {
     namespace "com.grappim.bankpick.view"
@@ -16,9 +16,6 @@ android {
             useSupportLibrary true
         }
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
     buildFeatures {
         viewBinding = true
     }
@@ -26,17 +23,16 @@ android {
 
 dependencies {
     implementation(project(":app"))
-    implementation(project(":uikit"))
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.fragment:fragment-ktx:1.5.3")
+    implementation(deps.android.appcompat)
+    implementation(deps.android.fragment)
+    implementation(deps.android.viewpager)
 
-    implementation("com.google.dagger:hilt-android:${versions.google.hilt}")
-    kapt("com.google.dagger:hilt-android-compiler:${versions.google.hilt}")
+    implementation(deps.navigation.fragment)
+    implementation(deps.navigation.ui)
 
-    implementation("com.jakewharton.timber:timber:${versions.timber}")
+    implementation("com.tbuonomo:dotsindicator:4.3")
+    implementation("dev.chrisbanes.insetter:insetter:0.6.1")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

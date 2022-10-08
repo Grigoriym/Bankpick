@@ -4,3 +4,4 @@ The design was taken from [here](https://www.uihut.com/mobile-app-designs/bankin
 2. In signUp screen I use deprecated accompanist insets so that to make the textField scrolling and focusing to work as I intended. It is the actual problem of compose, more details here: https://issuetracker.google.com/issues/192043120 | https://issuetracker.google.com/issues/217770337
 3. Interesting [solution](https://fvilarino.medium.com/hoisting-state-in-composable-objects-a833195752c4) with states for textFields. You can take some inspiration from JetSurvey app.
 4. I do not use BaseViewModel (though it is sometimes easier to create a base class), I try to use delegation
+5. Useful articles on multiple back-stack in navigation component: [1](https://developer.android.com/guide/navigation/multi-back-stacks), [2](https://developer.android.com/guide/navigation/navigation-ui#bottom_navigation), [3](https://developer.android.com/guide/navigation/navigation-ui#Tie-navdrawer)

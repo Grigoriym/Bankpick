@@ -21,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.grappim.bankpick.compose.R
+import com.grappim.uikit.R
 import com.grappim.bankpick.compose.domain.Transaction
 import com.grappim.bankpick.compose.ui.theme.BankPickBlackRussian
 import com.grappim.bankpick.compose.ui.theme.BankPickSpunPearl

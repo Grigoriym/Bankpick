@@ -30,7 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.grappim.bankpick.compose.R
+import com.grappim.uikit.R
 import com.grappim.bankpick.compose.domain.User
 import com.grappim.bankpick.compose.ui.theme.BankPickBlackRussian
 import com.grappim.bankpick.compose.ui.theme.BankPickLightSlateGrey

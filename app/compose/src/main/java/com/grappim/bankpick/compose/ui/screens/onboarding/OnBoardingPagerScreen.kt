@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
+import com.grappim.bankpick.app.onBoarding.OnBoardingPages
 import com.grappim.bankpick.compose.ui.theme.BankPickTheme
 import com.grappim.bankpick.compose.ui.theme.DefaultHorizontalPadding
 
@@ -54,9 +55,7 @@ fun OnBoardingPagerScreen(
             text = onBoardingPages.title,
             modifier = Modifier
                 .padding(top = 36.dp)
-                .padding(
-                    horizontal = 20.dp
-                ),
+                .padding(horizontal = 20.dp),
             fontSize = 26.sp,
             textAlign = TextAlign.Center
         )
@@ -64,9 +63,7 @@ fun OnBoardingPagerScreen(
             text = onBoardingPages.description,
             modifier = Modifier
                 .padding(top = 12.dp)
-                .padding(
-                    horizontal = 20.dp
-                ),
+                .padding(horizontal = 20.dp),
             fontSize = 14.sp,
             textAlign = TextAlign.Center
         )

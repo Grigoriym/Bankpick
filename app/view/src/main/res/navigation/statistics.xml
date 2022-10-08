@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/statistics"
+    app:startDestination="@id/fragmentStatistics">
+
+    <fragment
+        android:id="@+id/fragmentStatistics"
+        android:name="com.grappim.bankpick.view.ui.home.statistics.StatisticsFragment"
+        tools:layout="@layout/fragment_statistics" />
+
+</navigation>

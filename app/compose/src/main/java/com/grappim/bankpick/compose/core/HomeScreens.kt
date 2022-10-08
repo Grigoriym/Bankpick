@@ -1,6 +1,6 @@
 package com.grappim.bankpick.compose.core
 
-import com.grappim.bankpick.compose.R
+import com.grappim.uikit.R
 
 sealed interface HomeBankPickDestination {
     val route: String

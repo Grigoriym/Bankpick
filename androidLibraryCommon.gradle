@@ -1,3 +1,7 @@
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "kotlin-kapt"
+apply plugin: "dagger.hilt.android.plugin"
+
 android {
     compileSdk ProjectConfig.compileSdk
 
@@ -40,4 +44,11 @@ android {
         freeCompilerArgs += "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
         freeCompilerArgs += "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
     }
+}
+
+dependencies {
+    implementation("com.google.dagger:hilt-android:${versions.google.hilt}")
+    kapt("com.google.dagger:hilt-android-compiler:${versions.google.hilt}")
+
+    implementation("com.jakewharton.timber:timber:${versions.timber}")
 }

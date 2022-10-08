@@ -1,6 +1,6 @@
 package com.grappim.bankpick.compose.ui.screens.home.settings.profile
 
-import com.grappim.bankpick.compose.R
+import com.grappim.uikit.R
 
 sealed interface ProfileItem {
     val name: String
