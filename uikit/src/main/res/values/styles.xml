@@ -41,14 +41,33 @@
         <item name="boxStrokeWidth">0dp</item>
     </style>
 
+    <style name="Widget.BankPick.TextInputLayout.Email">
+        <item name="startIconDrawable">@drawable/ic_email</item>
+        <item name="startIconTint">@color/bankpick_spun_pearl</item>
+    </style>
+
+    <style name="Widget.BankPick.TextInputLayout.Password">
+        <item name="startIconDrawable">@drawable/ic_password</item>
+        <item name="startIconTint">@color/bankpick_spun_pearl</item>
+        <item name="endIconMode">password_toggle</item>
+        <item name="endIconTint">@color/bankpick_spun_pearl</item>
+    </style>
+
     <style name="Widget.BankPick.TextInputEditText" parent="">
         <!--        <item name="android:textAppearance">@style/TextAppearance.NineTwoThree.Subtitle2</item>-->
-        <item name="android:inputType">textNoSuggestions</item>
         <item name="android:textColor">@color/bankpick_black_russian</item>
         <item name="android:textColorHint">@color/bankpick_white_smoke</item>
         <item name="android:textSize">14sp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="Widget.BankPick.TextInputEditText.Email">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="Widget.BankPick.TextInputEditText.Password">
+        <item name="android:inputType">textPassword</item>
     </style>
 
 </resources>

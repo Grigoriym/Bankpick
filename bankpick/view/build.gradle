@@ -1,0 +1,42 @@
+apply from: "$rootProject.projectDir/applicationCommon.gradle"
+
+android {
+    namespace "com.grappim.bankpick.view"
+
+    defaultConfig {
+        applicationId "com.grappim.bankpick.view"
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation(project(":bankpick:common"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
+    implementation(deps.android.appcompat)
+    implementation(deps.android.fragment)
+    implementation(deps.android.viewpager)
+
+    implementation(deps.navigation.fragment)
+    implementation(deps.navigation.ui)
+
+    implementation("com.tbuonomo:dotsindicator:4.3")
+    implementation("dev.chrisbanes.insetter:insetter:0.6.1")
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
