@@ -3,14 +3,14 @@ package com.grappim.bankpick.compose.ui.screens.onboarding
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.grappim.bankpick.common.ui.onBoarding.OnBoardingPages
 import com.grappim.bankpick.compose.ui.theme.BankPickTheme
 import com.grappim.bankpick.compose.uikit.widgets.BankPickButton
@@ -27,14 +27,17 @@ fun OnBoardingScreen(
         OnBoardingPages.Third
     )
     val coroutineScope = rememberCoroutineScope()
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(
+        pageCount = {
+            pages.size
+        }
+    )
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(vertical = 60.dp)
     ) {
         HorizontalPager(
-            count = pages.size,
             modifier = Modifier
                 .weight(10f),
             state = pagerState

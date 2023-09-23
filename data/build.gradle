@@ -15,7 +15,8 @@ android {
         buildConfigField(
                 "String",
                 "GRAPPIM_API",
-                "\"grappim-apis.herokuapp.com\""
+                "\"10.0.2.2:8083\""
+//                "\"grappim-apis.herokuapp.com\""
         )
     }
     compileOptions {

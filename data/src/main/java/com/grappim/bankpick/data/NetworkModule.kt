@@ -64,7 +64,7 @@ class NetworkModule {
                 host = BuildConfig.GRAPPIM_API
                 url {
                     url("/api/v1/")
-                    protocol = URLProtocol.HTTPS
+                    protocol = URLProtocol.HTTP
                 }
             }
 

@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,9 +18,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.google.accompanist.pager.PagerState
-import com.google.accompanist.pager.rememberPagerState
 import com.grappim.bankpick.common.ui.onBoarding.OnBoardingPages
 import com.grappim.bankpick.compose.ui.theme.BankPickTheme
 import com.grappim.bankpick.compose.ui.theme.DefaultHorizontalPadding
@@ -45,12 +44,12 @@ fun OnBoardingPagerScreen(
                 contentDescription = "Pager Image"
             )
         }
-        HorizontalPagerIndicator(
-            pagerState = pagerState,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 40.dp)
-        )
+//        HorizontalPagerIndicator(
+//            pagerState = pagerState,
+//            modifier = Modifier
+//                .align(Alignment.CenterHorizontally)
+//                .padding(top = 40.dp)
+//        )
         Text(
             text = onBoardingPages.title,
             modifier = Modifier
@@ -78,7 +77,9 @@ private fun OnBoardingPagerScreenPreview() {
     BankPickTheme {
         OnBoardingPagerScreen(
             onBoardingPages = OnBoardingPages.First,
-            pagerState = rememberPagerState()
+            pagerState = rememberPagerState {
+                2
+            }
         )
     }
 }
@@ -91,7 +92,9 @@ private fun OnBoardingPagerScreenPreview2() {
     BankPickTheme {
         OnBoardingPagerScreen(
             onBoardingPages = OnBoardingPages.Second,
-            pagerState = rememberPagerState()
+            pagerState = rememberPagerState {
+                2
+            }
         )
     }
 }

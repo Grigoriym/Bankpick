@@ -18,6 +18,7 @@ import com.grappim.bankpick.compose.ui.theme.BankPickNavyBlue
 import com.grappim.bankpick.compose.ui.theme.BankPickSpunPearl
 import com.grappim.bankpick.compose.ui.theme.BankPickTheme
 import com.patrykandpatryk.vico.compose.axis.horizontal.bottomAxis
+import com.patrykandpatryk.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatryk.vico.compose.chart.Chart
 import com.patrykandpatryk.vico.compose.chart.line.lineChart
 import com.patrykandpatryk.vico.compose.chart.line.lineSpec
@@ -29,6 +30,7 @@ import com.patrykandpatryk.vico.core.component.text.textComponent
 import com.patrykandpatryk.vico.core.dimensions.MutableDimensions
 import com.patrykandpatryk.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatryk.vico.core.marker.Marker
+import com.patrykandpatryk.vico.core.marker.MarkerVisibilityChangeListener
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.*
@@ -73,7 +75,7 @@ fun BankPickChartWidget(
         color = BankPickSpunPearl.toArgb()
     }
 
-    val bottomAxis = bottomAxis(
+    val bottomAxis = rememberBottomAxis(
         valueFormatter = { value, chartValues ->
             (chartValues
                 .chartEntryModel
@@ -88,7 +90,6 @@ fun BankPickChartWidget(
                 }
                 .orEmpty()
         },
-        tickPosition = HorizontalAxis.TickPosition.Center(),
         label = inactiveLabel
     )
 
@@ -113,10 +114,6 @@ fun BankPickChartWidget(
             bottomAxis = bottomAxis,
             chartModelProducer = remember { entries },
             marker = getMarker(),
-            markerVisibilityChangeListener = { isVisible, marker ->
-                markerVisibility = isVisible
-                markerValue = marker
-            }
         )
     }
 }

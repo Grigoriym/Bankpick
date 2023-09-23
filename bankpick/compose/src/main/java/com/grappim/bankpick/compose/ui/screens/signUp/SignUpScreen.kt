@@ -6,8 +6,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.imeAnimationTarget
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.isImeVisible
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -42,9 +49,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.ProvideWindowInsets
-import com.google.accompanist.insets.navigationBarsWithImePadding
 import com.grappim.uikit.R
 import com.grappim.bankpick.compose.core.NativeText
 import com.grappim.bankpick.compose.core.asString
@@ -136,36 +140,34 @@ private fun SignUpScaffold(
     onSignInClick: () -> Unit,
     onSignUpClick: () -> Unit,
 ) {
-    ProvideWindowInsets {
-        BankPickProgressDialog(show = loading)
+    BankPickProgressDialog(show = loading)
 
-        Scaffold(
-            scaffoldState = scaffoldState,
-            snackbarHost = {
-                SnackbarHost(it) { data ->
-                    BankPickSnackbar(
-                        snackbarData = data
-                    )
-                }
-            },
-            topBar = {
-                BankPickTopBarContainer {
-                    BankPickBackButton(
-                        onClick = onBackClick
-                    )
-                }
+    Scaffold(
+        scaffoldState = scaffoldState,
+        snackbarHost = {
+            SnackbarHost(it) { data ->
+                BankPickSnackbar(
+                    snackbarData = data
+                )
             }
-        ) { paddingValues ->
-            SignUpScreenContent(
-                paddingValues = paddingValues,
-                emailInputState = emailInputState,
-                passwordInputState = passwordInputState,
-                nameInputState = nameInputState,
-                phoneInputState = phoneInputState,
-                onSignInClick = onSignInClick,
-                onSignUpClick = onSignUpClick
-            )
+        },
+        topBar = {
+            BankPickTopBarContainer {
+                BankPickBackButton(
+                    onClick = onBackClick
+                )
+            }
         }
+    ) { paddingValues ->
+        SignUpScreenContent(
+            paddingValues = paddingValues,
+            emailInputState = emailInputState,
+            passwordInputState = passwordInputState,
+            nameInputState = nameInputState,
+            phoneInputState = phoneInputState,
+            onSignInClick = onSignInClick,
+            onSignUpClick = onSignUpClick
+        )
     }
 }
 
@@ -188,26 +190,29 @@ private fun SignUpScreenContent(
     val positionManager = remember {
         PositionManager()
     }
-    val insets = LocalWindowInsets.current
+    val currentDensity = LocalDensity.current
+    val insets = WindowInsets
     val ime = insets.ime
-    val keyboardSize = ime.layoutInsets.bottom
+    val keyboardSize = ime.getBottom(currentDensity)
     positionManager.setCurrentHeight(keyboardSize)
 
-    var focusIndex by remember {
-        mutableStateOf(-1)
-    }
-    if (focusIndex != -1 && ime.isVisible) {
-        LaunchedEffect(key1 = keyboardSize, ime.isVisible) {
-            val amount = positionManager.getScrollAmount(focusIndex) -
-                    insets.navigationBars.bottom
-            if (amount > 0) listState.scrollBy(amount)
-        }
-    }
+//    var focusIndex by remember {
+//        mutableStateOf(-1)
+//    }
+//    if (focusIndex != -1 && insets.isImeVisible) {
+//        LaunchedEffect(key1 = keyboardSize, insets.isImeVisible) {
+//            val amount = positionManager.getScrollAmount(focusIndex) -
+//                    ime.getBottom(currentDensity)
+////                    insets.navigationBars.bottom
+//            if (amount > 0) listState.scrollBy(amount)
+//        }
+//    }
 
     LazyColumn(
         modifier = Modifier
             .padding(paddingValues)
-            .navigationBarsWithImePadding()
+            .navigationBarsPadding()
+            .imePadding()
             .onGloballyPositioned {
                 if (!positionManager.isParentSet)
                     positionManager.setupParent(it)
@@ -235,21 +240,22 @@ private fun SignUpScreenContent(
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .padding(horizontal = DefaultHorizontalPadding)
-                    .onGloballyPositioned {
-                        if (!ime.animationInProgress || ime.animationInProgress && 1 ==
-                            focusIndex
-                        ) {
-                            positionManager.registerPosition(
-                                1,
-                                PositionHandler(it)
-                            )
-                        }
-                    }
-                    .onFocusChanged {
-                        if (it.isFocused) {
-                            focusIndex = 1
-                        }
-                    },
+//                    .onGloballyPositioned {
+//                        if (!ime.animationInProgress || ime.animationInProgress && 1 ==
+//                            focusIndex
+//                        ) {
+//                            positionManager.registerPosition(
+//                                1,
+//                                PositionHandler(it)
+//                            )
+//                        }
+//                    }
+//                    .onFocusChanged {
+//                        if (it.isFocused) {
+//                            focusIndex = 1
+//                        }
+//                    }
+                ,
                 labelText = stringResource(id = R.string.full_name),
                 value = nameInputState.name,
                 onValueChange = { nameInputState.name = it },
@@ -278,21 +284,22 @@ private fun SignUpScreenContent(
                     .padding(top = 9.dp)
                     .padding(horizontal = DefaultHorizontalPadding)
                     .focusRequester(phoneNumberFocusRequester)
-                    .onGloballyPositioned {
-                        if (!ime.animationInProgress || ime.animationInProgress && 2 ==
-                            focusIndex
-                        ) {
-                            positionManager.registerPosition(
-                                2,
-                                PositionHandler(it)
-                            )
-                        }
-                    }
-                    .onFocusChanged {
-                        if (it.isFocused) {
-                            focusIndex = 2
-                        }
-                    },
+//                    .onGloballyPositioned {
+//                        if (!ime.animationInProgress || ime.animationInProgress && 2 ==
+//                            focusIndex
+//                        ) {
+//                            positionManager.registerPosition(
+//                                2,
+//                                PositionHandler(it)
+//                            )
+//                        }
+//                    }
+//                    .onFocusChanged {
+//                        if (it.isFocused) {
+//                            focusIndex = 2
+//                        }
+//                    }
+                ,
                 labelText = stringResource(id = R.string.phone_number),
                 value = phoneInputState.phone,
                 onValueChange = { phoneInputState.phone = it },
@@ -321,21 +328,22 @@ private fun SignUpScreenContent(
                     .padding(top = 9.dp)
                     .padding(horizontal = DefaultHorizontalPadding)
                     .focusRequester(emailFocusRequester)
-                    .onGloballyPositioned {
-                        if (!ime.animationInProgress || ime.animationInProgress && 3 ==
-                            focusIndex
-                        ) {
-                            positionManager.registerPosition(
-                                3,
-                                PositionHandler(it)
-                            )
-                        }
-                    }
-                    .onFocusChanged {
-                        if (it.isFocused) {
-                            focusIndex = 3
-                        }
-                    },
+//                    .onGloballyPositioned {
+//                        if (!ime.animationInProgress || ime.animationInProgress && 3 ==
+//                            focusIndex
+//                        ) {
+//                            positionManager.registerPosition(
+//                                3,
+//                                PositionHandler(it)
+//                            )
+//                        }
+//                    }
+//                    .onFocusChanged {
+//                        if (it.isFocused) {
+//                            focusIndex = 3
+//                        }
+//                    }
+                ,
                 emailInputState = emailInputState,
                 keyboardActions = KeyboardActions(
                     onNext = {
@@ -351,21 +359,22 @@ private fun SignUpScreenContent(
                     .padding(top = 9.dp)
                     .padding(horizontal = DefaultHorizontalPadding)
                     .focusRequester(passwordFocusRequester)
-                    .onGloballyPositioned {
-                        if (!ime.animationInProgress || ime.animationInProgress && 4 ==
-                            focusIndex
-                        ) {
-                            positionManager.registerPosition(
-                                4,
-                                PositionHandler(it)
-                            )
-                        }
-                    }
-                    .onFocusChanged {
-                        if (it.isFocused) {
-                            focusIndex = 4
-                        }
-                    },
+//                    .onGloballyPositioned {
+//                        if (!ime.animationInProgress || ime.animationInProgress && 4 ==
+//                            focusIndex
+//                        ) {
+//                            positionManager.registerPosition(
+//                                4,
+//                                PositionHandler(it)
+//                            )
+//                        }
+//                    }
+//                    .onFocusChanged {
+//                        if (it.isFocused) {
+//                            focusIndex = 4
+//                        }
+//                    }
+                ,
                 passwordInputState = passwordInputState,
                 onImeDoneClick = onSignUpClick
             )
@@ -401,7 +410,7 @@ private fun SignUpScreenContent(
             Spacer(
                 modifier = Modifier
                     .height(with(LocalDensity.current) {
-                        (keyboardSize - ime.bottom).toDp()
+                        (keyboardSize - ime.getBottom(LocalDensity.current)).toDp()
                     })
             )
         }
